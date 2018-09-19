@@ -13,8 +13,9 @@ class DbModel{
 			$this->db =  $db;
 		
 		else{
-			$this->db = new PDO('mysql:host=localhost;dbname=forum;charset=utf8mb4;',
-               'root' , 'root');
+			$this->db = new PDO('mysql:host=localhost;dbname=forum','root','');
+			   
+			   echo "Database connect <br><br>";
 			
 		}
 		
@@ -25,7 +26,10 @@ class DbModel{
     {
         $threadlist = array();
         foreach($this->db->query('SELECT * FROM thread') as $row) {
-            $threadlist[] = new Thread ($row['threadid'], $row['threadname']);
+			$t = new Thread ($row['threadid'], $row['threadname']);
+			echo "Pushing thread $t->id into threadlist <br>";
+			array_push($threadlist, $t);
+			print_r($threadlist);
         }
 
         return $threadlist;
