@@ -1,8 +1,11 @@
 <?php
 
+
+echo "<h1><br><br>From the View:</h1>";
+
 foreach($threads as $thread){
 	
-	echo "$thread->name <br>";
+	echo "<br>$thread->name <br>";
 }
 
 

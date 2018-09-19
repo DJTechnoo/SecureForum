@@ -24,14 +24,13 @@ class DbModel{
 	
 	public function getThreadList()
     {
+		echo "----- Model is getting threads from database <br>";
         $threadlist = array();
         foreach($this->db->query('SELECT * FROM thread') as $row) {
 			$t = new Thread ($row['threadid'], $row['threadname']);
-			echo "Pushing thread $t->id into threadlist <br>";
 			array_push($threadlist, $t);
-			print_r($threadlist);
         }
-
+		echo "---- returning the list to controller <br>";
         return $threadlist;
     }
 	
